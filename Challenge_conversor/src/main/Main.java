@@ -17,12 +17,16 @@ public class Main {
 		String cantidadIngresar;
 		do
 		{
-			cantidadIngresar = JOptionPane.showInputDialog("Introduce la cantidad de dinero a convertir");
+			cantidadIngresar = JOptionPane.showInputDialog("Introduce la cantidad de dinero a convertir\n(Recuerda usar solo numeros)");
 			if(cantidadIngresar == null)
 			{
 				System.exit(0);
+			}else if(tieneLetras(cantidadIngresar))
+			{
+				JOptionPane.showMessageDialog(null, "NO puedes usar letras en el valor!!!");
+				pedirDinero();
 			}
-		}while(tieneLetras(cantidadIngresar) == true || cantidadIngresar.isEmpty());
+		}while(cantidadIngresar.isEmpty());
 		double ingresoDouble = Double.parseDouble(cantidadIngresar);
 		
 		pedirTipoCambio(ingresoDouble);
